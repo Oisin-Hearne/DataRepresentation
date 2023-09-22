@@ -19,7 +19,7 @@ const myHiFunction = function(){
 
 myHiFunction();
 
-
+//Anonymous Function
 const myComponent = ()=> {
     console.log("Bye!");
 }
