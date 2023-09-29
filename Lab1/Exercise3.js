@@ -22,3 +22,22 @@ const listTasks = () => {
     });
 };
 listTasks();
+
+// 3. (d)
+//Finds the index of the given task, then uses splice to remove it from the array if found.
+//If not, prints that the element was not found.
+const deleteTask = (task) => {
+    let index = stringArray.indexOf(task);
+    if(index != -1) {
+        console.log(stringArray.splice(index, 1) + " was deleted from the array!");
+    }
+    else {
+        console.log("Element "+task+" not found!");
+    }
+    return stringArray.length;
+};
+
+deleteTask("September");
+console.log("New size of array: "+deleteTask("of"));
+deleteTask("October");
+listTasks();
