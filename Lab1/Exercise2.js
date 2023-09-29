@@ -26,3 +26,15 @@ const sum = (x, y) => {
     return x+y;
 }
 sum(sampleSum1, sampleSum2);
+
+// 2. (d)
+//Callback function using array.map. Multiplies every number below 70 by 2.
+const ages = [25, 31, 42, 77];
+const result = ages.map((x) => {
+    if(x < 70)
+        return x * 2;
+    else
+        return x;
+});
+console.log(result); //Result: 50, 62, 84, 77.
+
