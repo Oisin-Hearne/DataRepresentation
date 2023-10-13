@@ -23,23 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
-    <BrowserRouter>
-    <Navbar bg="primary" data-bs-theme="dark">
-    <Container>
-      <Navbar.Brand href="home">Navbar</Navbar.Brand>
-      <Nav classname="me-auto">
-      <Nav.Link href="home">Home</Nav.Link>
-      <Nav.Link href="Read">Read</Nav.Link>
-      <Nav.Link href="Create">Create</Nav.Link>
-      </Nav>
-    </Container>
-  </Navbar>
-  <Routes>
-        <Route path="Create" element={<Create/>}></Route>
-        <Route path="Read" element={<Read/>}></Route>
-        <Route path="home" element={<ContentC/>}></Route>
-  </Routes>
-      </BrowserRouter>
+    <App></App>
   </React.StrictMode >
 );
 
