@@ -11,7 +11,13 @@ function BookItem(props) {
                 <Card.Body>
                     <Card.Title>{props.b.title}</Card.Title>
                     <Card.Text>
-                        {props.b.authors}
+                        <ul>
+                            {
+                                props.b.authors.map((author) => (
+                                    <li>{author}</li>
+                                ))
+                            }
+                        </ul>
                     </Card.Text>
                 </Card.Body>
             </Card>
