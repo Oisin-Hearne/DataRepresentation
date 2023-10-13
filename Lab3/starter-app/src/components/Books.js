@@ -1,47 +1,13 @@
-function Books() {
-    const bookData = [
-        {
-            "title": "Learn git in a Month of Lunches",
-            "isbn": "1617292419",
-            "pageCount": 0,
-            "thumbnailUrl":
-                "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/umali.jpg",
-            "status": "MEAP",
-            "authors": ["Rick Umali"],
-            "categories": []
-        },
-        {
-            "title": "MongoDB in Action, Second Edition",
-            "isbn": "1617291609",
-            "pageCount": 0,
-            "thumbnailUrl":
-                "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/banker2.jpg",
-            "status": "MEAP",
-            "authors": [
-                "Kyle Banker",
-                "Peter Bakkum",
-                "Tim Hawkins",
-                "Shaun Verch",
-                "Douglas Garrett"
-            ],
-            "categories": []
-        },
-        {
-            "title": "Getting MEAN with Mongo, Express, Angular, and Node",
-            "isbn": "1617292036",
-            "pageCount": 0,
-            "thumbnailUrl":
-                "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sholmes.jpg",
-            "status": "MEAP",
-            "authors": ["Simon Holmes"],
-            "categories": []
-        }
-    ];
+import BookItem from "./BookItem";
 
-    return (
-        <div>
-            
-        </div>
+//Reads the bookData array and converts it to a map.
+//For every book, also calls the BookItem component
+//to display it.
+function Books(props) {
+    return props.myBooks.map(
+        (book)=>{
+            return <BookItem b={book}></BookItem>
+        }
     );
 }
 export default Books;
