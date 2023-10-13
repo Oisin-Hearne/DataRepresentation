@@ -11,37 +11,36 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
-  createBrowserRouter,
-  RouterProvider,
+  NavLink,
   BrowserRouter,
   Route,
   Routes,
 } from "react-router-dom";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 
   <React.StrictMode>
-    
+    <BrowserRouter>
     <Navbar bg="primary" data-bs-theme="dark">
     <Container>
       <Navbar.Brand href="home">Navbar</Navbar.Brand>
       <Nav classname="me-auto">
-      <BrowserRouter>
-      <Routes>
-          <Route exact path="/header" element={<HeaderC/>}>Header</Route>
-          <Route exact path="/footer" element={<FooterC/>}>Footer</Route>
-          <Route exact path="/home" element={<ContentC/>}>Home</Route>
-      </Routes>
-      </BrowserRouter>
+      <Nav.Link href="home">Home</Nav.Link>
+      <Nav.Link href="footer">Footer</Nav.Link>
+      <Nav.Link href="header">Header</Nav.Link>
       </Nav>
     </Container>
   </Navbar>
-
-    <ContentC/>
-  </React.StrictMode>
+  <Routes>
+        <Route path="header" element={<HeaderC/>}></Route>
+        <Route path="footer" element={<FooterC/>}></Route>
+        <Route path="home" element={<ContentC/>}></Route>
+  </Routes>
+      </BrowserRouter>
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function
