@@ -25,7 +25,7 @@ function App() {
       <Navbar bg="primary" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="home">Navbar</Navbar.Brand>
-          <Nav classname="me-auto">
+          <Nav className="me-auto">
             <Nav.Link href="home">Home</Nav.Link>
             <Nav.Link href="Read">Read</Nav.Link>
             <Nav.Link href="Create">Create</Nav.Link>

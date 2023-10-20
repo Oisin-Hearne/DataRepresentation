@@ -7,6 +7,7 @@ function Read() {
 
   const [bookData, setData] = useState([]);
 
+  //Retrieves data from the API and sets the value of bookData to the books array returned
   useEffect(
     () => {
       axios.get("https://jsonblob.com/api/jsonblob/1161593332966481920").then(
@@ -14,6 +15,9 @@ function Read() {
           setData(response.data.books);
         }
       ).catch(
+        (error)=>{
+          console.log(error);
+        }
       );
     },[]
   );
