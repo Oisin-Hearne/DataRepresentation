@@ -25,6 +25,10 @@ app.get('/api/books', (req, res) => {
     res.json(data);
 })
 
+//This sends a HTML file to the user when they go to /test.
+app.get('/test', (req, res) => {
+    res.sendFile(__dirname+"/index.html");
+})
 
 
 app.listen(port, () => {
