@@ -30,6 +30,12 @@ app.get('/test', (req, res) => {
     res.sendFile(__dirname+"/index.html");
 })
 
+//This takes data from a get/post and reshows it
+app.get('/name', (req, res) => {
+    res.send('Hello, '+req.query.fname + " " + req.query.lname);
+})
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
