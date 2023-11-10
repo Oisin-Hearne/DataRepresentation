@@ -7,10 +7,10 @@ function Read() {
 
   const [bookData, setData] = useState([]);
 
-  //Retrieves data from the API and sets the value of bookData to the books array returned
+  //Retrieves data from our server and sets the value of bookData to the books array returned
   useEffect(
     () => {
-      axios.get("localhost:4000/api/books").then(
+      axios.get("http://localhost:4000/api/books").then(
         (response)=>{
           setData(response.data.books);
         }
