@@ -22,7 +22,10 @@ app.get('/api/books', (req, res) => {
     res.json({myBooks:data});
 })
 
-
+app.post('/api/books', (req, res) => {
+    console.log(req.body);
+    //data.books.push(req.body);
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

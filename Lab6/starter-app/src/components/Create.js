@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Create() {
 
@@ -28,7 +28,24 @@ function Create() {
 
     //Post book to server
     console.log(JSON.stringify(b));
+    postBook(b);
   };
+
+  function postBook(book) {
+    useEffect(
+      () => {
+        axios.post("http://localhost:4000/api/books", JSON.stringify(b)).then(
+          (response) => {
+            console.log(response);
+          }
+        ).catch(
+          (error) => {
+            console.log(error);
+          }
+        )
+      },[]
+    );
+  }
 
   //onChange below lets the valeus of title, author and cover be updated every time the user changes the field.
   return (
