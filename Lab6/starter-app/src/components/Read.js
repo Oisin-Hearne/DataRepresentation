@@ -10,7 +10,7 @@ function Read() {
   //Retrieves data from the API and sets the value of bookData to the books array returned
   useEffect(
     () => {
-      axios.get("https://jsonblob.com/api/jsonblob/1161593332966481920").then(
+      axios.get("localhost:4000/api/books").then(
         (response)=>{
           setData(response.data.books);
         }
