@@ -23,8 +23,14 @@ app.get('/api/books', (req, res) => {
 })
 
 app.post('/api/books', (req, res) => {
+    
     console.log(req.body);
-    //data.books.push(req.body);
+    res.send("Book Posted.");
+
+    //Attempt to add to json
+   // var counter = data.books.length;
+   // var jsonified = JSON.parse(req.body);
+   // data.books[counter] = jsonified;
 })
 
 app.listen(port, () => {

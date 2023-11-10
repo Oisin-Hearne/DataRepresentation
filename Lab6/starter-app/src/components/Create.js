@@ -4,19 +4,6 @@ import axios from 'axios';
 
 function Create() {
 
-  class bookClass {
-    constructor(title, author, cover) { // isbn, pageCount, status, categories) {
-      this.title = title;
-      this.authors = [author];
-      this.thumbnailURL = cover;
-      this.isbn = 0;
-      this.paegCount = 0;
-      this.status = "MEAP";
-      this.categories = [];
-
-    }
-  }
-
   //These allow us to modify the valeus of title, author and cover in the input boxes on the fly
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -24,26 +11,27 @@ function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); //Prevents data from being submitted multiple times
-    var b = new bookClass(title, author, cover);
 
     //Post book to server
-    console.log(JSON.stringify(b));
-    postBook(b);
+
+    const book = {
+      title:title,
+      authors:[author],
+      thumbnailURL:cover
+    }
+    console.log(JSON.stringify(book));
+    postBook(book);
   };
 
   function postBook(book) {
-    useEffect(
-      () => {
-        axios.post("http://localhost:4000/api/books", JSON.stringify(b)).then(
-          (response) => {
-            console.log(response);
-          }
-        ).catch(
-          (error) => {
-            console.log(error);
-          }
-        )
-      },[]
+    axios.post("http://localhost:4000/api/books", JSON.stringify(book)).then(
+      (response) => {
+        console.log(response);
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      }
     );
   }
 
