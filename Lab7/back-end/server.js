@@ -16,6 +16,7 @@ async function main() {
 
 }
 
+//Book Schema - Effectively outlines what fields are going to be in the database.
 const bookSchema = new mongoose.Schema({
     title: String,
     isbn: String,
@@ -50,6 +51,7 @@ app.get('/api/books/searchID/:bookID', async (req, res) => {
     res.json(books);
 })
 
+//Fetches all of the books from our database.
 app.get('/api/books', async (req, res) => {
     let books = await bookModel.find({});
     res.json(books);
