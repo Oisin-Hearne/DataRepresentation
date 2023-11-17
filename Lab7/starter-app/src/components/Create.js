@@ -19,12 +19,11 @@ function Create() {
       authors:[author],
       thumbnailURL:cover
     }
-    console.log(JSON.stringify(book));
     postBook(book);
   };
 
   function postBook(book) {
-    axios.post("http://localhost:4000/api/books", JSON.stringify(book)).then(
+    axios.post("http://localhost:4000/api/books", book).then(
       (response) => {
         console.log(response);
       }

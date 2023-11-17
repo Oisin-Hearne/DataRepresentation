@@ -7,6 +7,27 @@ var data = { "books": [{ "title": "Learn Git in a Month of Lunches", "isbn": "16
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//Mongoose Stuff
+main().catch(err => console.log(err));
+
+async function main() {
+    await mongoose.connect('mongodb+srv://admin:admin@cluster0.fk5vge6.mongodb.net/?retryWrites=true&w=majority');
+
+
+}
+
+const bookSchema = new mongoose.Schema({
+    title: String,
+    isbn: String,
+    pageCount: Number,
+    thumbnailUrl: String,
+    status: String,
+    authors: [String],
+    categories: [String]
+});
+
+const bookModel = mongoose.model('Book', bookSchema);
+
 //CORS code
 const cors = require('cors');
 app.use(cors());
@@ -16,21 +37,43 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept");
     next();
+
 });
 
-
-app.get('/api/books', (req, res) => {
-    res.json({myBooks:data});
+//Fetch a book from the database by ID or Title
+app.get('/api/books/searchTitle/:booktitle', async (req, res) => {
+    let books = await bookModel.find({title: req.params.booktitle});
+    res.json(books);
+})
+app.get('/api/books/searchID/:bookID', async (req, res) => {
+    let books = await bookModel.find({_id: req.params.bookID});
+    res.json(books);
 })
 
-app.post('/api/books', (req, res) => {
-    
-    console.log(req.body);
-    res.send("Book Posted.");
+app.get('/api/books', async (req, res) => {
+    let books = await bookModel.find({});
+    res.json(books);
+})
 
-    //Attempt to add to json
-    //var counter = data.books.length;
-    //data.books[counter] = req.body;
+//Send a book to the database
+app.post('/api/books', (req, res) => {
+
+    console.log(req.body);
+
+    bookModel.create({
+        title:req.body.title,
+        thumbnailUrl:req.body.thumbnailURL,
+        authors:req.body.authors,
+        isbn:"0000",
+        pagecount:"0",
+        status:"MEAP",
+        categories:[]
+
+    }).then(()=>{res.send("Book Created")})
+    .catch(()=>{res.send("Book Not Created")});
+
+
+
 })
 
 app.listen(port, () => {
