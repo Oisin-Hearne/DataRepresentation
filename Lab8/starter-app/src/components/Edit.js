@@ -29,7 +29,7 @@ export default function Edit(props) {
         const newBook = {
             id: id,
             title: title,
-            thumbnailURL: url,
+            thumbnailUrl: url,
             authors: authors
         };
 
