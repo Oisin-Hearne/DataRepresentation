@@ -33,7 +33,7 @@ export default function Edit(props) {
             authors: authors
         };
 
-        axios.put('http://localhost:4000/api/book'+id, newBook)
+        axios.put('http://localhost:4000/api/books/'+id, newBook)
         .then((res) => {
             console.log(res.data);
             nav('/read');
@@ -56,7 +56,7 @@ export default function Edit(props) {
                 <div className="form-group">
                     <label>Change Author: </label>
                     <input type="text" classname="form-control" value={authors}
-                    onChange={(e) => setURL(e.target.value)}/>
+                    onChange={(e) => setAuthors(e.target.value)}/>
                 </div>
                 <div className="form-group">
                     <input type="submit" value="Edit Book" className="btn btn-primary"/>

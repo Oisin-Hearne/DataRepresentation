@@ -76,7 +76,11 @@ app.post('/api/books', (req, res) => {
 })
 
 app.put('/api/books/:id', (req, res) => {
+    console.log(req.body);
     
+    bookModel.updateOne({_id: req.params.id}, {$set: {title: req.params.title, thumbnailUrl: req.params.thumbnailURL, authors: req.params.authors}})
+    .then(() => {res.send("Book Updated")})
+    .catch(() => {res.send("Book not Updated")});
 })
 
 app.listen(port, () => {
