@@ -44,17 +44,17 @@ export default function Edit(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Add Book Title: </label>
+                    <label>Change Book Title: </label>
                     <input type="text" classname="form-control" value={title}
                     onChange={(e) => setTitle(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <label>Add Book Cover URL: </label>
+                    <label>Change Book Cover URL: </label>
                     <input type="text" classname="form-control" value={url}
                     onChange={(e) => setURL(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <label>Add Author: </label>
+                    <label>Change Author: </label>
                     <input type="text" classname="form-control" value={authors}
                     onChange={(e) => setURL(e.target.value)}/>
                 </div>

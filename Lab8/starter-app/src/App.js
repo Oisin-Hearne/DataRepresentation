@@ -6,6 +6,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Read from './components/Read';
 import ContentC from './components/ContentC';
+import Edit from './components/Edit';
 import Create from './components/Create';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -36,6 +37,7 @@ function App() {
         <Route path="Create" element={<Create />}></Route>
         <Route path="Read" element={<Read />}></Route>
         <Route path="home" element={<ContentC />}></Route>
+        <Route path="edit/:id" element={<Edit />}></Route>
       </Routes>
     </BrowserRouter>
   );
