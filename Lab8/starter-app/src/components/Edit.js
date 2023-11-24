@@ -13,6 +13,7 @@ export default function Edit(props) {
 
     const nav = useNavigate();
 
+    //Get the current values of the current book
     useEffect(() => {
         axios.get('http://localhost:4000/api/book/'+id)
         .then((response) => {
@@ -33,6 +34,7 @@ export default function Edit(props) {
             authors: authors
         };
 
+        //Uploads the book to the server in place of the ID being updated.
         axios.put('http://localhost:4000/api/books/'+id, newBook)
         .then((res) => {
             console.log(res.data);
