@@ -15,11 +15,15 @@ export default function Edit(props) {
 
     //Get the current values of the current book
     useEffect(() => {
-        axios.get('http://localhost:4000/api/book/'+id)
+        axios.get('http://localhost:4000/api/books/searchID/'+id)
         .then((response) => {
-            setTitle(response.data.title);
-            setURL(response.data.thumbnailURL);
-            setAuthors(response.data.authors);
+            response.data.forEach(book => {
+                console.log(book);
+                setTitle(book.title);
+                setURL(book.thumbnailUrl);
+                setAuthors(book.authors);
+            });
+
         }).catch(function (error) {
             console.log(error);
         })
@@ -46,20 +50,20 @@ export default function Edit(props) {
         <div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Change Book Title: </label>
+                    <label>Change Book Title: </label><br/>
                     <input type="text" classname="form-control" value={title}
                     onChange={(e) => setTitle(e.target.value)}/>
-                </div>
+                </div><br/>
                 <div className="form-group">
-                    <label>Change Book Cover URL: </label>
+                    <label>Change Book Cover URL: </label><br/>
                     <input type="text" classname="form-control" value={url}
                     onChange={(e) => setURL(e.target.value)}/>
-                </div>
+                </div><br/>
                 <div className="form-group">
-                    <label>Change Author: </label>
+                    <label>Change Author: </label><br/>
                     <input type="text" classname="form-control" value={authors}
                     onChange={(e) => setAuthors(e.target.value)}/>
-                </div>
+                </div><br/>
                 <div className="form-group">
                     <input type="submit" value="Edit Book" className="btn btn-primary"/>
                 </div>
