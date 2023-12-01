@@ -51,7 +51,7 @@ app.get('/api/books/searchID/:bookID', async (req, res) => {
     res.json(books);
 })
 
-//Delete a book via title
+//Delete a book via ID
 app.delete('/api/books/deleteID/:bookID', async (req, res) => {
     await bookModel.findByIdAndDelete(req.params.bookID);
     console.log("deleted: "+req.params.bookID)

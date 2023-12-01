@@ -23,7 +23,7 @@ import axios from 'axios';
                     <Link to={"/edit/" + props.b._id} className="btn btn-primary">Edit</Link>
                     
                     <Button variant="danger" onClick={(e) => {
-
+                        //Sends a delete request to the server with the ID of the current book.
                         axios.delete('http://localhost:4000/api/books/deleteID/' + props.b._id)
                             .then((response) => {
                                 //Refresh Read

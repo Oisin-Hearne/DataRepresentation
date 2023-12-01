@@ -22,6 +22,8 @@ function Read() {
     },[]
   );
 
+  //Reloads the data. A method to be called by BookItem whenever
+  //the delete button is pressed.
   const ReloadData = (e) => {
     axios.get("http://localhost:4000/api/books").then(
       (response)=>{
