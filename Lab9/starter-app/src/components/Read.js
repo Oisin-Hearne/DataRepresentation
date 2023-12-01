@@ -22,6 +22,19 @@ function Read() {
     },[]
   );
 
+  const ReloadData = (e) => {
+    axios.get("http://localhost:4000/api/books").then(
+      (response)=>{
+        setData(response.data);
+      }
+    ).catch(
+      (error)=>{
+        console.log(error);
+      }
+    );
+  }
+  
+
     //Read calls Books, Books calls BookItem.
   return (
     <div>

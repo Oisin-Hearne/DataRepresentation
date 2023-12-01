@@ -13,8 +13,6 @@ main().catch(err => console.log(err));
 
 async function main() {
     await mongoose.connect('mongodb+srv://admin:admin@cluster0.fk5vge6.mongodb.net/?retryWrites=true&w=majority');
-
-
 }
 
 //Book Schema - Effectively outlines what fields are going to be in the database.
@@ -54,10 +52,10 @@ app.get('/api/books/searchID/:bookID', async (req, res) => {
 })
 
 //Delete a book via title
-app.get('/api/books/searchID/:bookID', async (req, res) => {
-    await bookModel.deleteOne({_id: req.params.bookID});
-    let books = await bookModel.find({});
-    res.json(books);
+app.delete('/api/books/deleteID/:bookID', async (req, res) => {
+    let result = await bookModel.findByIdAndDelete(req.params.id);
+    console.log(result);
+    res.send(result);
 })
 
 //Fetches all of the books from our database.
