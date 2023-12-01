@@ -3,13 +3,10 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 
 //Displays the book passed to this component in a nice card.
 //DIsplays the thumbnail, title and authors.
  function BookItem(props) {
-
-    const nav = useNavigate();
 
     return (
         <div style={{ marginTop: "20px", marginLeft: "20px" }}>
@@ -26,10 +23,11 @@ import { useNavigate } from "react-router-dom";
                     <Link to={"/edit/" + props.b._id} className="btn btn-primary">Edit</Link>
                     
                     <Button variant="danger" onClick={(e) => {
+
                         axios.delete('http://localhost:4000/api/books/deleteID/' + props.b._id)
                             .then((response) => {
                                 //Refresh Read
-                                props.reload();
+                                let r = props.reload();
                             }).catch(function (error) {
                                 console.log(error);
                             })

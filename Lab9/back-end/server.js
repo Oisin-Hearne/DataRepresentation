@@ -53,9 +53,9 @@ app.get('/api/books/searchID/:bookID', async (req, res) => {
 
 //Delete a book via title
 app.delete('/api/books/deleteID/:bookID', async (req, res) => {
-    let result = await bookModel.findByIdAndDelete(req.params.id);
-    console.log(result);
-    res.send(result);
+    await bookModel.findByIdAndDelete(req.params.bookID);
+    console.log("deleted: "+req.params.bookID)
+    res.send("Result");
 })
 
 //Fetches all of the books from our database.
