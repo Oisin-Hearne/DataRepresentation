@@ -6,7 +6,7 @@ import BookItem from "./BookItem";
 function Books(props) {
     return props.myBooks.map(
         (book)=>{
-            return <BookItem b={book}></BookItem>
+            return <BookItem b={book} reload={()=>{props.Reload()}}></BookItem>
         }
     );
 }

@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 //Displays the book passed to this component in a nice card.
 //DIsplays the thumbnail, title and authors.
-//<!-- to={"/delete/"+props.b._id} -->
-function BookItem(props) {
+ function BookItem(props) {
 
     const nav = useNavigate();
 
@@ -25,15 +24,12 @@ function BookItem(props) {
                         </ul>
                     </Card.Text>
                     <Link to={"/edit/" + props.b._id} className="btn btn-primary">Edit</Link>
+                    
                     <Button variant="danger" onClick={(e) => {
                         axios.delete('http://localhost:4000/api/books/deleteID/' + props.b._id)
                             .then((response) => {
-                                if (response.deletedCount == 1)
-                                    console.log("Book Deleted");
-                                else
-                                    console.log("No Book Found");
-                                //Redirect to Books
-                                nav('/read');
+                                //Refresh Read
+                                props.reload();
                             }).catch(function (error) {
                                 console.log(error);
                             })

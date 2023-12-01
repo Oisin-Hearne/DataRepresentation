@@ -39,7 +39,7 @@ function Read() {
   return (
     <div>
       <h2>Read Component</h2>
-      <Books myBooks={bookData}></Books>
+      <Books myBooks={bookData} Reload={ReloadData()}></Books>
     </div>
   );
 
