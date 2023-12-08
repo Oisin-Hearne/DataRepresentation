@@ -44,11 +44,6 @@ app.use(function (req, res, next) {
 
 });
 
-//Send Back React App
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+"/../starter-app/build/index.html"));
-})
-
 //Fetch a book from the database by ID or Title
 app.get('/api/books/searchTitle/:booktitle', async (req, res) => {
     let books = await bookModel.find({title: req.params.booktitle});
@@ -96,6 +91,11 @@ app.put('/api/books/:id', async (req, res) => {
     let book = await bookModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(() => {res.send("Book Updated")})
     .catch(() => {res.send("Book not Updated")});
+})
+
+//Send Back React App
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+"/../build/index.html"));
 })
 
 app.listen(port, () => {
